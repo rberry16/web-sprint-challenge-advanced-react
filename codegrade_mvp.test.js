@@ -6,7 +6,7 @@ import { render, fireEvent, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
 jest.setTimeout(1000) // default 5000 too long for Codegrade
-const waitForOptions = { timeout: 100 }
+const waitForOptions = { timeout: 500 }
 const queryOptions = { exact: false }
 
 let up, down, left, right, reset, submit
