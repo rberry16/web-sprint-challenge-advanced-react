@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import axios from 'axios'
 
 const URL = 'http://localhost:9000/api/result'
@@ -33,22 +33,14 @@ resetState = () => {
   })
 }
 
-updateState = () => {
-  this.setState({
-    ...this.state,
-    x: this.state.x,
-    y: this.state.y,
-    steps: this.state.steps,
-    message: ''
-  })
-}
-
 
 moveLeft = () => {
   if (this.state.x > 1) {
-    this.state.x--;
-    this.state.steps++
-    this.updateState();
+    this.setState({
+      ...this.state,
+      x: this.state.x -1,
+      steps: this.state.steps + 1
+    })
   }
   else {
     this.setState({
@@ -60,9 +52,11 @@ moveLeft = () => {
 
 moveRight = () => {
   if (this.state.x < 3) {
-    this.state.x++;
-    this.state.steps++
-    this.updateState();
+    this.setState({
+      ...this.state,
+      x: this.state.x +1,
+      steps: this.state.steps + 1
+    })
   } else {
     this.setState({
       ...this.state,
@@ -73,9 +67,11 @@ moveRight = () => {
 
 moveUp = () => {
   if (this.state.y > 1) {
-    this.state.y--;
-    this.state.steps++
-    this.updateState();
+    this.setState({
+      ...this.state,
+      y: this.state.y -1,
+      steps: this.state.steps + 1
+    })
   } else {
     this.setState({
       ...this.state,
@@ -86,9 +82,11 @@ moveUp = () => {
 
 moveDown = () => {
   if (this.state.y < 3) {
-    this.state.y++
-    this.state.steps++
-    this.updateState();
+    this.setState({
+      ...this.state,
+      y: this.state.y +1,
+      steps: this.state.steps + 1
+    })
   } else {
     this.setState({
       ...this.state,
@@ -154,9 +152,9 @@ submit = (evt) => {
           <button id="down" onClick={this.moveDown}>DOWN</button>
           <button id="reset" onClick={this.resetState}>reset</button>
         </div>
-        <form>
+        <form onSubmit={this.submit}>
           <input id="email" type="email" placeholder="type email" onChange={this.setEmail} value={this.state.email}></input>
-          <input id="submit" type="submit" onClick={this.submit}></input>
+          <input id="submit" type="submit"></input>
         </form>
       </div>
     )

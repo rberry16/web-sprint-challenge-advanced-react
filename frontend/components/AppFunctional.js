@@ -55,22 +55,14 @@ export default function AppFunctional(props) {
     })
   }
   
-  const updateState = () => {
-    setState({
-      ...state,
-      x: state.x,
-      y: state.y,
-      steps: state.steps,
-      message: ''
-    })
-  }
-  
   
   const moveLeft = () => {
     if (state.x > 1) {
-      state.x--;
-      state.steps++
-      updateState();
+      setState({
+        ...state,
+        x: state.x -1,
+        steps: state.steps + 1
+      })
     }
     else {
       setState({
@@ -82,9 +74,11 @@ export default function AppFunctional(props) {
   
   const moveRight = () => {
     if (state.x < 3) {
-      state.x++;
-      state.steps++
-      updateState();
+      setState({
+        ...state,
+        x: state.x +1,
+        steps: state.steps + 1
+      })
     } else {
       setState({
         ...state,
@@ -95,9 +89,11 @@ export default function AppFunctional(props) {
   
   const moveUp = () => {
     if (state.y > 1) {
-      state.y--;
-      state.steps++
-      updateState();
+      setState({
+        ...state,
+        y: state.y -1,
+        steps: state.steps + 1
+      })
     } else {
       setState({
         ...state,
@@ -108,9 +104,11 @@ export default function AppFunctional(props) {
   
   const moveDown = () => {
     if (state.y < 3) {
-      state.y++
-      state.steps++
-      updateState();
+      setState({
+        ...state,
+        y: state.y +1,
+        steps: state.steps + 1
+      })
     } else {
       setState({
         ...state,
